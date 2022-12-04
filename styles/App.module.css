@@ -1,0 +1,8 @@
+.app {
+  position: relative;
+  background-color: var(--bgc);
+  padding-top: 235px;
+  background-image: url("/img/noisybg.png");
+}
+
+

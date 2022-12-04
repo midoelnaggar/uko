@@ -1,0 +1,30 @@
+
+.header {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 84.7vw;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    padding: 6px;
+  }
+  .logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+  
+  .icon {
+    margin-inline-start: 50px;
+  }
+  .menuLink {
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+
+

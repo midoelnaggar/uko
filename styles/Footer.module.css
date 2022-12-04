@@ -1,0 +1,33 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  border-top: 1px dashed #707070;
+  padding-block: 55px;
+}
+.empty {
+  flex:30%;
+}
+.copyright {
+  flex: 40%;
+  font-size: 16px;
+  letter-spacing: 1.04px;
+  text-align: center;
+}
+.madeby {
+  flex:30%;
+  padding-inline: 80px;
+  display: flex;
+  justify-content: flex-end;
+
+}
+.madeby > span {
+  color: #F58C8C;
+  font-size: 120%;
+  margin-inline: 5px;
+}
+
+.madeby > a {
+
+  margin-inline: 5px;
+}
