@@ -1,10 +1,10 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import PageMotion from "../components/PageMotion";
-import { useRouter } from "next/router";
+
 
 export default function Home() {
-  const router = useRouter();   
+  
   const categories = [
     { name: "Sushi", image: "/img/cat01.png" },
     { name: "Sashimi", image: "/img/cat02.png" },
@@ -46,7 +46,7 @@ export default function Home() {
               <h1>YOUR CRAVINGS</h1>
             </div>
           </div>
-          <div onClick={()=> router.push("/the-menu")} className={styles.orderNow}>
+          <div className={styles.orderNow}>
             <span className={styles.border} />
             <div>Order Now</div>
           </div>

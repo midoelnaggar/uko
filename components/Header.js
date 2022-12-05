@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/Header.module.css";
 
@@ -31,9 +30,33 @@ export default function Header() {
         height={24}
       />
       <div className={styles.menu}>
-        <div className={styles.menuLink} onClick={() => router.push("/the-menu")}>THE MENU</div>
-        <div className={styles.menuLink} onClick={() => router.push("/our-story")}>OUR STORY</div>
-        <div className={styles.menuLink} onClick={() => router.push("/branches")}>BRANCHES</div>
+        <div
+          className={`${styles.menuLink} ${
+            router.pathname.startsWith("/the-menu") && styles.activeLink
+          }`}
+          onClick={() => router.push("/the-menu")}
+        >
+          THE MENU
+          <span />
+        </div>
+        <div
+          className={`${styles.menuLink} ${
+            router.pathname.startsWith("/our-story") && styles.activeLink
+          }`}
+          onClick={() => router.push("/our-story")}
+        >
+          OUR STORY
+          <span />
+        </div>
+        <div
+          className={`${styles.menuLink} ${
+            router.pathname.startsWith("/branches") && styles.activeLink
+          }`}
+          onClick={() => router.push("/branches")}
+        >
+          BRANCHES
+          <span />
+        </div>
       </div>
     </header>
   );

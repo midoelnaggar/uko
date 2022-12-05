@@ -4,7 +4,9 @@ import moment from "moment/moment";
 function Footer() {
   return (
     <footer className={styles.footer}>
-              <div className={styles.empty} />
+              <div className={styles.logo}>
+                <img src="/img/uko-logo.png" alt="uko-logo" />
+              </div>
       <div className={styles.copyright}>
       All Rights Reserved © {moment().format("YYYY")}
 

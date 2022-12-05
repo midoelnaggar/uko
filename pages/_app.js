@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import styles from "../styles/App.module.css";
 import { Open_Sans } from "@next/font/google";
 import Header from "../components/Header";
@@ -11,6 +12,7 @@ const openSans = Open_Sans({
 
 function MyApp({ Component, pageProps }) {
   return (
+    <AnimatePresence>
     <div className={styles.app}>
       <style jsx global>
         {`
@@ -25,6 +27,7 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       <Footer />
     </div>
+    </AnimatePresence>
   );
 }
 
