@@ -1,0 +1,21 @@
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title :first-child {
+margin-bottom:-40px ;
+}
+.title :nth-child(2) {
+    font-family: psfournier-std-grand ;
+    font-size: 80px;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 3.6px;
+    line-height: 105px;
+    }
+
+    .subCategory{
+        display: flex;
+    }
