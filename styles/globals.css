@@ -3,7 +3,7 @@
   --secFont: psfournier-std-grand;
   --firColor: #f3eddb;
   --secColor: #f58c8c;
-  
+  font-family: OpenSans;
 }
 
 @import url("https://p.typekit.net/p.css?s=1&k=dgw2qqb&ht=tk&f=40918.40925.40954.40984.40919.40926.40955.40985.40920.40927.40956.40986&a=115355001&app=typekit&e=css");
@@ -64,14 +64,76 @@
   font-stretch: normal;
 }
 
-.tk-psfournier-std {
-  font-family: "psfournier-std", sans-serif;
+/* Open Sans */
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-Light.ttf");
+  font-style: normal;
+  font-weight: 300;
 }
-.tk-psfournier-std-grand {
-  font-family: "psfournier-std-grand", sans-serif;
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-LightItalic.ttf");
+  font-style: italic;
+  font-weight: 300;
 }
-.tk-psfournier-std-petit {
-  font-family: "psfournier-std-petit", sans-serif;
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-Italic.ttf");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-Medium.ttf");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-MediumItalic.ttf");
+  font-style: italic;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-SemiBold.ttf");
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-SemiBoldItalic.ttf");
+  font-style: italic;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/font/OpenSans-BoldItalic.ttf");
+  font-style: italic;
+  font-weight: 700;
 }
 
 html,

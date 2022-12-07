@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import axios from "axios";
 import styles from "../styles/App.module.css";
-import openSans from "../components/openSans";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CategoriesContext from "../context/CategoriesContext ";
+import LoadingContext from "../context/LoadingContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+  const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -19,20 +20,15 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AnimatePresence>
-      <CategoriesContext.Provider value={categories}>
-        <div className={styles.app}>
-          <style jsx global>
-            {`
-              html {
-                font-family: ${openSans.style.fontFamily};
-              }
-            `}
-          </style>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-        </div>
-      </CategoriesContext.Provider>
+      <LoadingContext.Provider value={{ loading, setLoading }}>
+        <CategoriesContext.Provider value={categories}>
+          <div className={styles.app}>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </div>
+        </CategoriesContext.Provider>
+      </LoadingContext.Provider>
     </AnimatePresence>
   );
 }

@@ -1,12 +1,13 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import LoadingContext from "../context/LoadingContext";
 import styles from "../styles/Header.module.css";
 
 export default function Header() {
   const [cartOpen, setCartOpen] = useState(false);
   const router = useRouter();
-
+  const { setLoading } = useContext(LoadingContext);
   return (
     <>
       <div
@@ -55,7 +56,10 @@ export default function Header() {
             className={`${styles.menuLink} ${
               router.pathname.startsWith("/the-menu") && styles.activeLink
             }`}
-            onClick={() => router.push("/the-menu")}
+            onClick={() => {
+              setLoading(true);
+              router.push("/the-menu")
+            }}
           >
             THE MENU
             <span />
@@ -64,7 +68,9 @@ export default function Header() {
             className={`${styles.menuLink} ${
               router.pathname.startsWith("/our-story") && styles.activeLink
             }`}
-            onClick={() => router.push("/our-story")}
+            onClick={() => {
+              router.push("/our-story");
+            }}
           >
             OUR STORY
             <span />
