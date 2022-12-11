@@ -3,7 +3,10 @@
   --secFont: psfournier-std-grand;
   --firColor: #f3eddb;
   --secColor: #f58c8c;
+  --linkColor :#F5DB8C;
   font-family: OpenSans;
+  background-color: var(--bgc);
+  color: var(--firColor)
 }
 
 @import url("https://p.typekit.net/p.css?s=1&k=dgw2qqb&ht=tk&f=40918.40925.40954.40984.40919.40926.40955.40985.40920.40927.40956.40986&a=115355001&app=typekit&e=css");

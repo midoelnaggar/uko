@@ -32,19 +32,54 @@
   display: none;
   position: absolute;
   right: -650px;
-  top: 80px;
+  top: 30px;
   padding: 30px;
   width: 607px;
   height: 821px;
   background: var(--firColor) 0% 0% no-repeat padding-box;
   border-radius: 45px;
   z-index: 1;
-  animation: forwards 0.1s fromRight ;
-
-
+  animation: forwards 0.1s fromRight;
 }
+
+.cartHeader {
+  display: flex;
+  align-items: flex-end;
+}
+
+.cartHeader > h1 {
+  margin: 0;
+  color: var(--bgc);
+  font-family: var(--secFont);
+  font-size: 86px;
+}
+
+.cartHeader > h5 {
+  position: relative;
+  margin: 0;
+  font-family: var(--secFont);
+  font-size: 26px;
+  font-weight: 300;
+  padding-inline: 10px;
+  margin-inline-start: 30px;
+  margin-bottom: 3px;
+  z-index: 0;
+}
+
+.cartHeader > h5 > span {
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bgc);
+  width: 100%;
+  padding-top: 100%;
+  z-index: -1;
+}
+
 .bluredBg {
- display: none;
+  display: none;
   position: absolute;
   right: 0;
   top: 0;
@@ -53,31 +88,40 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 1;
-  animation: forwards 0.1s fadein ;
-
 }
 
-@keyframes fadeIn {
-  from{
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 @keyframes fromRight {
-  from{
-    right: -650px;  }
+  from {
+    right: -650px;
+  }
   to {
-    right: 30px;  }
+    right: 30px;
+  }
 }
 
-.profileModal {
+.profileMenu {
+  position: absolute;
+  top: 86px;
+  right: 10px;
+  width: 240px;
+  background: var(--firColor);
+  border-radius: 9px;
+  padding: 20px 30px;
+  z-index: 1;
+  
+  a {
+    color: var(--bgc);
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 600;
+  }
+  
+  .divider{
+    border-top: 1px dashed #707070;
+    margin-block: 15px;
+  }
 
 }
-
-
-
 
 
 .menu {

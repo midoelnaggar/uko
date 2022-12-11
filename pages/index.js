@@ -2,15 +2,21 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import PageMotion from "../components/PageMotion";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import CategoriesContext from "../context/CategoriesContext ";
 import Loading from "../components/Loading";
+import PageLoadingContext from "../context/PageLoadingContext";
 
 export default function Home() {
   const categories = useContext(CategoriesContext);
-  const router = useRouter();   
-  return (
-     categories ? <PageMotion>
+  const { setPageLoading } = useContext(PageLoadingContext);
+  const router = useRouter();
+  useEffect(() => {
+    setPageLoading(false);
+  }, []);
+
+  return categories ? (
+    <PageMotion>
       <div className={styles.container}>
         <Head>
           <title>Uko Sushi</title>
@@ -33,12 +39,19 @@ export default function Home() {
                 <h1>YOUR CRAVINGS</h1>
               </div>
             </div>
-            <div onClick={()=> router.push("/the-menu")} className={styles.orderNow}>
+            <div
+              onClick={() => router.push("/the-menu")}
+              className={styles.orderNow}
+            >
               <span className={styles.border} />
               <div>Order Now</div>
             </div>
           </div>
-          <img className={styles.heroImg} src="/img/heroImg.png" alt="heroImg" />
+          <img
+            className={styles.heroImg}
+            src="/img/heroImg.png"
+            alt="heroImg"
+          />
           <div className={styles.ourStory}>
             <div className={styles.ourStoryTitle}>
               <span>僕達の物語</span>
@@ -47,8 +60,8 @@ export default function Home() {
             <p className={styles.ourStoryParag}>
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-              et ea rebum. Stet clita kasd gubergren.
+              erat, sed diam voluptua. At vero eos et accusam et justo duo
+              dolores et ea rebum. Stet clita kasd gubergren.
             </p>
           </div>
           <div className={styles.theMenu}>
@@ -64,18 +77,35 @@ export default function Home() {
             <div className={styles.categories}>
               {categories.map((category, index) => {
                 return (
-                  <div key={index} onClick={()=>router.push("/the-menu/"+category?.slug)} className={styles.category}>
+                  <div
+                    key={index}
+                    onClick={() => {
+                      router.push({
+                        pathname: "/the-menu/",
+                        query: {
+                          category: category?.id,
+                        },
+                      });
+                      setPageLoading(true);
+                    }}
+                    className={styles.category}
+                  >
                     <div className={styles.categoryNumber}>{index + 1}</div>
                     <div className={styles.categoryName}>{category?.name}</div>
-                    <img src={category?.image} className={styles.categoryImage} alt={category?.name} />
+                    <img
+                      src={category?.image}
+                      className={styles.categoryImage}
+                      alt={category?.name}
+                    />
                   </div>
-                
                 );
               })}
             </div>
           </div>
         </main>
       </div>
-      </PageMotion>: <Loading />
+    </PageMotion>
+  ) : (
+    <Loading />
   );
 }

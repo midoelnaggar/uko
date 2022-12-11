@@ -1,0 +1,1904 @@
+{
+	"info": {
+		"_postman_id": "8d6abb64-e82b-4a45-a47e-51ca499a7aa5",
+		"name": "uko",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24457442"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@rest.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/auth/login",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@rest.com",
+									"type": "default"
+								},
+								{
+									"key": "otp",
+									"value": "2484",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/auth/verify",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjY1MzA3ODAsImV4cCI6MTY2NjUzNDM4MCwibmJmIjoxNjY2NTMwNzgwLCJqdGkiOiIzS1ZFSjZNMGx3dkR1cUloIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.LcpP6JLkEujZc9SK8jrI1fuMurMq-FQMFyx300gBO_c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/logout",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "forget password",
+			"item": [
+				{
+					"name": "send code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mido.elnaggar@gmail.com",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/forgot-password/sendCode",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"forgot-password",
+								"sendCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "65",
+									"type": "default"
+								},
+								{
+									"key": "code",
+									"value": "2830",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/forgot-password/confirmCode",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"forgot-password",
+								"confirmCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "65",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/forgot-password/updatePassword",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"forgot-password",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "address",
+					"item": [
+						{
+							"name": "list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxMDE4NDQsImV4cCI6MTY2NjEwNTQ0NCwibmJmIjoxNjY2MTAxODQ0LCJqdGkiOiJ0c1ZzeWZwSUhXaVI1RlF5Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.WSr9BtAyTSwSa5EXJj-lSGlbuA7yyCHbzD9WDwCdJAU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://macariastore.com/api/profile/address",
+									"protocol": "https",
+									"host": [
+										"macariastore",
+										"com"
+									],
+									"path": [
+										"api",
+										"profile",
+										"address"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjUxMjQsImV4cCI6MTY2NjE2ODcyNCwibmJmIjoxNjY2MTY1MTI0LCJqdGkiOiJITDd4MVhLek1kRm85RDFNIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.cPC-k81vo3q2iwWoIlIhDy6ck7gdn8ETRGXw2fO-pZc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "address",
+											"value": "new",
+											"type": "text"
+										},
+										{
+											"key": "zip_code",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "city_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "building_number",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "apartment_no",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "flat_no",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "ahmed",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "khaled",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "011111111111",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://macariastore.com/api/profile/address/store",
+									"protocol": "https",
+									"host": [
+										"macariastore",
+										"com"
+									],
+									"path": [
+										"api",
+										"profile",
+										"address",
+										"store"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjUxMjQsImV4cCI6MTY2NjE2ODcyNCwibmJmIjoxNjY2MTY1MTI0LCJqdGkiOiJITDd4MVhLek1kRm85RDFNIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.cPC-k81vo3q2iwWoIlIhDy6ck7gdn8ETRGXw2fO-pZc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "16",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "new",
+											"type": "text"
+										},
+										{
+											"key": "zip_code",
+											"value": "1236",
+											"type": "text"
+										},
+										{
+											"key": "country_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "city_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "building_number",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "apartment_no",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "flat_no",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "ahmed",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "khaled",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "011111111111",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://macariastore.com/api/profile/address/update",
+									"protocol": "https",
+									"host": [
+										"macariastore",
+										"com"
+									],
+									"path": [
+										"api",
+										"profile",
+										"address",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjUxMjQsImV4cCI6MTY2NjE2ODcyNCwibmJmIjoxNjY2MTY1MTI0LCJqdGkiOiJITDd4MVhLek1kRm85RDFNIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.cPC-k81vo3q2iwWoIlIhDy6ck7gdn8ETRGXw2fO-pZc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "16",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://macariastore.com/api/profile/address/delete",
+									"protocol": "https",
+									"host": [
+										"macariastore",
+										"com"
+									],
+									"path": [
+										"api",
+										"profile",
+										"address",
+										"delete"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "orders",
+					"item": [
+						{
+							"name": "list",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxODMxODQsImV4cCI6MTY2NjE4Njc4NCwibmJmIjoxNjY2MTgzMTg0LCJqdGkiOiJVT1dIdXFRczZ5d1VsQ3pjIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.6JpFyp0niNt5xSmuSOS6llrE0stLuWPGP48WzpPFko8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://macariastore.com/api/profile/orders",
+									"protocol": "https",
+									"host": [
+										"macariastore",
+										"com"
+									],
+									"path": [
+										"api",
+										"profile",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Vrby5yYXFhbXlhdC5jb20vdWtvL3B1YmxpYy9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTY3MDMxOTgzMiwiZXhwIjoxNjcxODMxODMyLCJuYmYiOjE2NzAzMTk4MzIsImp0aSI6InZSc2ozMUltdVNiMUhGb2IiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4VOdNgi231XKb6YelDHfjgaIsWJw0N8VperwywtWlms",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/profile/",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Vrby5yYXFhbXlhdC5jb20vdWtvL3B1YmxpYy9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTY3MDMxOTgzMiwiZXhwIjoxNjcxODMxODMyLCJuYmYiOjE2NzAzMTk4MzIsImp0aSI6InZSc2ozMUltdVNiMUhGb2IiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4VOdNgi231XKb6YelDHfjgaIsWJw0N8VperwywtWlms",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "ahmed",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "01111216933",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin@rest.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/profile/update",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxMDE4NDQsImV4cCI6MTY2NjEwNTQ0NCwibmJmIjoxNjY2MTAxODQ0LCJqdGkiOiJ0c1ZzeWZwSUhXaVI1RlF5Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.WSr9BtAyTSwSa5EXJj-lSGlbuA7yyCHbzD9WDwCdJAU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/gh/Pictures/Screenshots/Screenshot (7).png"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/profile/uploadImage",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"profile",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxMDU4MzcsImV4cCI6MTY2NjEwOTQzNywibmJmIjoxNjY2MTA1ODM3LCJqdGkiOiJ4dkIzbDBsU1l6azRwcVZNIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.cIFxVQJ-Xniy1fF3KQVpuQTG_R0IUUq2luowlUKuBOc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "secret123",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "secret",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/profile/changePassword",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"profile",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "extra",
+			"item": [
+				{
+					"name": "Cities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjY1MzQsImV4cCI6MTY2NjE3MDEzNCwibmJmIjoxNjY2MTY2NTM0LCJqdGkiOiJGS1ZJZTNZelEwa25Fa09iIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FICtX3DKT0xThMMxIBZKXcRvHIDeTbgenJJkkAMh3dE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/list/cities",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"list",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Privacy Policy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjY1MzQsImV4cCI6MTY2NjE3MDEzNCwibmJmIjoxNjY2MTY2NTM0LCJqdGkiOiJGS1ZJZTNZelEwa25Fa09iIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FICtX3DKT0xThMMxIBZKXcRvHIDeTbgenJJkkAMh3dE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/privacyPolicy",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"privacyPolicy"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Terms And Condition",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjY1MzQsImV4cCI6MTY2NjE3MDEzNCwibmJmIjoxNjY2MTY2NTM0LCJqdGkiOiJGS1ZJZTNZelEwa25Fa09iIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FICtX3DKT0xThMMxIBZKXcRvHIDeTbgenJJkkAMh3dE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/termsAndCondition",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"termsAndCondition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact Us",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjY1MzQsImV4cCI6MTY2NjE3MDEzNCwibmJmIjoxNjY2MTY2NTM0LCJqdGkiOiJGS1ZJZTNZelEwa25Fa09iIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FICtX3DKT0xThMMxIBZKXcRvHIDeTbgenJJkkAMh3dE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@test.test",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "01111216938",
+									"type": "text"
+								},
+								{
+									"key": "massage",
+									"value": "test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/contactUs",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"contactUs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FAQs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjY1MzQsImV4cCI6MTY2NjE3MDEzNCwibmJmIjoxNjY2MTY2NTM0LCJqdGkiOiJGS1ZJZTNZelEwa25Fa09iIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FICtX3DKT0xThMMxIBZKXcRvHIDeTbgenJJkkAMh3dE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/faqs",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"faqs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webViews links",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjY1MzQsImV4cCI6MTY2NjE3MDEzNCwibmJmIjoxNjY2MTY2NTM0LCJqdGkiOiJGS1ZJZTNZelEwa25Fa09iIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FICtX3DKT0xThMMxIBZKXcRvHIDeTbgenJJkkAMh3dE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/webViews/links",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"webViews",
+								"links"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contact",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjYxNjY1MzQsImV4cCI6MTY2NjE3MDEzNCwibmJmIjoxNjY2MTY2NTM0LCJqdGkiOiJGS1ZJZTNZelEwa25Fa09iIiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FICtX3DKT0xThMMxIBZKXcRvHIDeTbgenJJkkAMh3dE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/contact",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "categories",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/categories",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "pages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://uko.raqamyat.com/uko/public/api/products/pages",
+							"protocol": "https",
+							"host": [
+								"uko",
+								"raqamyat",
+								"com"
+							],
+							"path": [
+								"uko",
+								"public",
+								"api",
+								"products",
+								"pages"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "size_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "color_id",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "category_id",
+									"value": "9",
+									"disabled": true
+								},
+								{
+									"key": "sort_by",
+									"value": "best_seller",
+									"description": "best_seller,less_price,high_price,new arrivals",
+									"disabled": true
+								},
+								{
+									"key": "price_from",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "price_to",
+									"value": "300",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "carts",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2Njc5MTYzMzcsImV4cCI6MTY2OTQyODMzNywibmJmIjoxNjY3OTE2MzM3LCJqdGkiOiJuS21LZUlxaUFuZ280eW5pIiwic3ViIjoiMzAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.8wwazbRhZy-J4jJm4ULCh9h8hi6VVAW7NblWytk0ehg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/cart",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjY1MjAyNDMsImV4cCI6MTY2NjUyMzg0MywibmJmIjoxNjY2NTIwMjQzLCJqdGkiOiJSckpBajhwUno5YXA1OVVvIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.0pzNCDHasyFpPCPCRd830385oB5Os0o3-WzeoWEXXBc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "qty",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "size_id",
+									"value": "22",
+									"type": "text"
+								},
+								{
+									"key": "color_id",
+									"value": "36",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/cart/store",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"cart",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "minimize",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjY1MjM4NjgsImV4cCI6MTY2NjUyNzQ2OCwibmJmIjoxNjY2NTIzODY4LCJqdGkiOiJIRzV2bThYem5IMFp1MnJ0Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8M6TnmAEoj6R_oCDdkdIXT6A337PXxCgIyhpYreSdso",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/cart/sub",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"cart",
+								"sub"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sum",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjY1MjM4NjgsImV4cCI6MTY2NjUyNzQ2OCwibmJmIjoxNjY2NTIzODY4LCJqdGkiOiJIRzV2bThYem5IMFp1MnJ0Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8M6TnmAEoj6R_oCDdkdIXT6A337PXxCgIyhpYreSdso",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/cart/add",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjY1MjM4NjgsImV4cCI6MTY2NjUyNzQ2OCwibmJmIjoxNjY2NTIzODY4LCJqdGkiOiJIRzV2bThYem5IMFp1MnJ0Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8M6TnmAEoj6R_oCDdkdIXT6A337PXxCgIyhpYreSdso",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/cart/delete",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"cart",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "promo code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2Njc5MTQ2NjAsImV4cCI6MTY2OTQyNjY2MCwibmJmIjoxNjY3OTE0NjYwLCJqdGkiOiJwVVV2c1JKUllscVlPNHJrIiwic3ViIjoiMzAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.m7B8WvqiPC8f552xE83_POBo95HDGDDID-kRO2QyQKY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "promo_code",
+									"value": "sss",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/orders/promoCode",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"promoCode"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjY1MjU0NDQsImV4cCI6MTY2NjUyOTA0NCwibmJmIjoxNjY2NTI1NDQ0LCJqdGkiOiJITXFJM1hiS2x3QW1pRGlPIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VRev9zaF5pwu8j2FKuUuLcY5KXijoDkoERrM8B6paSY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "payment_method",
+									"value": "cash",
+									"type": "text"
+								},
+								{
+									"key": "address_id",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/orders/store",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reorder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjY1MzA3ODAsImV4cCI6MTY2NjUzNDM4MCwibmJmIjoxNjY2NTMwNzgwLCJqdGkiOiIzS1ZFSjZNMGx3dkR1cUloIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.LcpP6JLkEujZc9SK8jrI1fuMurMq-FQMFyx300gBO_c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/orders/reOrder",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"reOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fav",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjcyMDI5NDQsImV4cCI6MTY2ODcxNDk0NCwibmJmIjoxNjY3MjAyOTQ0LCJqdGkiOiJsRGVaMFhFNWF0cnhZaTBIIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4ttGH6yL_cQ0v7UmZz81kUGVH124qVSC_c3ra67wU1w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/fav",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"fav"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjcyMDI5NDQsImV4cCI6MTY2ODcxNDk0NCwibmJmIjoxNjY3MjAyOTQ0LCJqdGkiOiJsRGVaMFhFNWF0cnhZaTBIIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4ttGH6yL_cQ0v7UmZz81kUGVH124qVSC_c3ra67wU1w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/fav/store",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"fav",
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "payment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjcyMDI5NDQsImV4cCI6MTY2ODcxNDk0NCwibmJmIjoxNjY3MjAyOTQ0LCJqdGkiOiJsRGVaMFhFNWF0cnhZaTBIIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4ttGH6yL_cQ0v7UmZz81kUGVH124qVSC_c3ra67wU1w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/payment?type=api",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"payment"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "api"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjcyMDI5NDQsImV4cCI6MTY2ODcxNDk0NCwibmJmIjoxNjY3MjAyOTQ0LCJqdGkiOiJsRGVaMFhFNWF0cnhZaTBIIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4ttGH6yL_cQ0v7UmZz81kUGVH124qVSC_c3ra67wU1w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "order_id",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://macariastore.com/api/orders/status/update",
+							"protocol": "https",
+							"host": [
+								"macariastore",
+								"com"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					},
+					{
+						"key": "Authorization",
+						"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21hY2FyaWFzdG9yZS5jb20vYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NjcyMDI5NDQsImV4cCI6MTY2ODcxNDk0NCwibmJmIjoxNjY3MjAyOTQ0LCJqdGkiOiJsRGVaMFhFNWF0cnhZaTBIIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4ttGH6yL_cQ0v7UmZz81kUGVH124qVSC_c3ra67wU1w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://macariastore.com/api/home?category_id=2",
+					"protocol": "https",
+					"host": [
+						"macariastore",
+						"com"
+					],
+					"path": [
+						"api",
+						"home"
+					],
+					"query": [
+						{
+							"key": "category_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
