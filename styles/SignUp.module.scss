@@ -9,6 +9,7 @@
     font-size: 38px;
     line-height: 50px;
   }
+  
 
   .signinContainer {
     border: 1px dashed #707070;
@@ -26,41 +27,47 @@
       width: 100%;
       margin-block: 20px;
     }
-    .labelContainer {
+    .row {
       display: flex;
       justify-content: space-between;
-      .label {
-        font-size: 18px;
-        font-weight: 600;
+      .field {
+        width: 48%;
+        .labelContainer {
+          display: flex;
+          justify-content: space-between;
+          .label {
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+        .inputContainer {
+          position: relative;
+          .input {
+            color: var(--firColor);
+            font-family: OpenSans;
+            font-size: 16px;
+            border-radius: 0;
+            border: none;
+            background: none;
+            outline: none;
+            width: 100%;
+          }
+
+          .eye {
+            position: absolute;
+            height: 1px;
+            right: 0;
+            bottom: 5px;
+            scale: 0.8;
+          }
+
+          .bar {
+            margin-block-end: 20px;
+            height: 0.5px;
+            background-color: #707070;
+          }
+        }
       }
-    }
-    .inputContainer {
-      position: relative;
-      .input {
-        color: var(--firColor);
-        font-family: OpenSans;
-        font-size: 16px;
-        border-radius: 0;
-        border: none;
-        background: none;
-        outline: none;
-        width: 100%;
-      }
-
-
-  }
-    .bar {
-      margin-block-end: 20px;
-      height: 0.5px;
-      background-color: #707070;
-    }
-
-    .eye {
-      position: absolute;
-      height: 1px;
-      right: 0;
-      bottom: 5px;
-      scale: 0.8;
     }
   }
   .forgot {

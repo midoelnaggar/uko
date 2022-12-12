@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { CookiesProvider, useCookies } from "react-cookie";
 import axios from "axios";
+import { SnackbarProvider } from "notistack"
 import styles from "../styles/App.module.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -11,7 +12,6 @@ import CategoriesContext from "../context/CategoriesContext ";
 import PageLoadingContext from "../context/PageLoadingContext";
 import "../styles/globals.css";
 import Loading from "../components/Loading";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const [loginDetails, setLoginDetails] = useState({});
@@ -34,6 +34,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <CookiesProvider>
+          <SnackbarProvider>
+
       <AnimatePresence>
         <PageLoadingContext.Provider value={{ pageLoading, setPageLoading }}>
           <LoginDetailsContext.Provider
@@ -53,7 +55,6 @@ function MyApp({ Component, pageProps }) {
                     />
                   )}
                   <Header />
-                  <div>{loginDetails?.item?.data?.user?.name}</div>
                   <Component {...pageProps} />
                   <Footer />
                 </div>
@@ -62,6 +63,7 @@ function MyApp({ Component, pageProps }) {
           </LoginDetailsContext.Provider>
         </PageLoadingContext.Provider>
       </AnimatePresence>
+      </SnackbarProvider>
     </CookiesProvider>
   );
 }

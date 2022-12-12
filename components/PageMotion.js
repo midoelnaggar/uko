@@ -12,7 +12,7 @@ export default function PageMotion({ children }) {
       initial="hidden"
       animate="enter"
       exit="exit"
-      transition={{ type: "linear",duration:1 }}
+      transition={{ type: "linear",duration:0.5 }}
     >
       {children}
     </motion.div>

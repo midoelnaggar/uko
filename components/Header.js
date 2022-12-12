@@ -6,12 +6,15 @@ import { useContext, useState } from "react";
 import PageLoadingContext from "../context/PageLoadingContext";
 import styles from "../styles/Header.module.scss";
 import LoginDetailsContext from "../context/LoginDetailsContext";
+import CartContext from "../context/CartContext";
 
 export default function Header() {
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const { setPageLoading } = useContext(PageLoadingContext);
   const { loginDetails, setLoginDetails } = useContext(LoginDetailsContext);
+  const { cart, setCart } = useContext(CartContext);
+
   const [cookies, setCookies, removeCookies] = useCookies("auth");
   const router = useRouter();
 
@@ -24,19 +27,51 @@ export default function Header() {
         }}
         style={{
           display: `${cartModalOpen || profileMenuOpen ? "block" : "none"}`,
-          backdropFilter: `${profileMenuOpen && "none"}`,
+          backdropFilter: `${cartModalOpen ? "blur(20px)" : "none"}`,
         }}
         className={styles.bluredBg}
       />
       <div
-        style={{ display: `${cartModalOpen ? "block" : "none"}` }}
+        style={{ display: `${cartModalOpen ? "flex" : "none"}` }}
         className={styles.cartModal}
       >
         <div className={styles.cartHeader}>
           <h1>Your Bag</h1>
           <h5>
-            1<span />
+            {cart?.length}
+            <span />
           </h5>
+        </div>
+        <div className={styles.cartContent}>
+          {cart?.length > 0 ? (
+            <div className={styles.content}> </div>
+          ) : (
+            <div className={styles.noItems}>
+              <img src="/img/bag.svg" alt="empty-bag" />
+            </div>
+          )}
+        </div>
+        <div className={styles.cartFooter}>
+          {cart?.length > 0 ? (
+            <div className={styles.checkoutOrCancel}>
+              <div className={styles.checkout}>Checkout</div>
+              <div className={styles.cancel}>X</div>
+            </div>
+          ) : (
+            <>
+              <div className={styles.yourBagIsEmpty}>Your bag is empty...</div>
+              <div
+                onClick={() => {
+                  setPageLoading(true);
+                  setCartModalOpen(false);
+                  router.push("/the-menu")
+                }}
+                className={styles.shopNow}
+              >
+                Shop Now
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div
@@ -52,8 +87,9 @@ export default function Header() {
                 removeCookies("auth");
                 setLoginDetails({});
                 setProfileMenuOpen(false);
+                window.location.href = "/";
               }}
-              href="/"
+              href=""
             >
               Logout
             </Link>
@@ -112,31 +148,6 @@ export default function Header() {
             }}
           >
             THE MENU
-            <span />
-          </div>
-          <div
-            className={`${styles.menuLink} ${
-              router.pathname.startsWith("/our-story") && styles.activeLink
-            }`}
-            onClick={() => {
-              setPageLoading(true);
-              router.push("/our-story");
-            }}
-          >
-            OUR STORY
-            <span />
-          </div>
-          <div
-            className={`${styles.menuLink} ${
-              router.pathname.startsWith("/branches") && styles.activeLink
-            }`}
-            onClick={() => {
-              setPageLoading(true);
-
-              router.push("/branches");
-            }}
-          >
-            BRANCHES
             <span />
           </div>
         </div>

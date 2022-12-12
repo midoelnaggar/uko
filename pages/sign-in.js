@@ -1,39 +1,52 @@
 import styles from "../styles/SignIn.module.scss";
 import PageMotion from "../components/PageMotion";
+import { useSnackbar } from "notistack"
 import Head from "next/head";
-import {useRouter} from "next/router";
 import { useCookies } from 'react-cookie';
 import { useEffect, useContext, useState, useRef } from "react";
 import PageLoadingContext from "../context/PageLoadingContext";
-import LoginDetailsContext from "../context/LoginDetailsContext";
 import Link from "next/link";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function SignIn() {
-    const { setPageLoading } = useContext(PageLoadingContext);
-    const router = useRouter();
+  const { enqueueSnackbar } = useSnackbar();
+  const { setPageLoading } = useContext(PageLoadingContext);
   const [hiddenPassword, setHiddenPassword] = useState(true);
   const [cookies, setCookie] = useCookies(['auth']);
   const emailRef = useRef("");
   const passwordRef = useRef("");
+  const router = useRouter();
+
 
   useEffect(() => {
     setPageLoading(false);
   }, []);
 
   const submit = async () =>{
+    try {
    const res = await axios.post("https://uko.raqamyat.com/uko/public/api/auth/login",{
     email:emailRef?.current?.value,
     password:passwordRef?.current?.value,
    })
-
+   console.log(res.status)
    if ( res.status === 200) {
     setCookie("auth",res.data)
-   window.location.href = "/" 
+   if (router?.query?.signin === "please-signin"){
+    window.location.href = "/the-menu"
+   }
+    else{window.location.href = "/" }
   }
-
+}
+  catch (error)  {
+if (error.response) {
+    enqueueSnackbar(error?.response?.data?.message,{
+      variant:"error"
+  })
+}
   }
-
+  
+  }
 
   return (
     <>
@@ -46,7 +59,7 @@ export default function SignIn() {
       </Head>
       <PageMotion>
         <div className={styles.page}>
-          <h1 className={styles.header}>Sign In</h1>
+          <h1 className={styles.header}>{`${router?.query?.signin === "please-signin"?"Please Sign In To Add Items To The Cart":"Sign In"}`}</h1>
           <div className={styles.signinContainer}>
             <div className={styles.title}>Sign In</div>
             <div className={styles.divider} />
@@ -84,11 +97,11 @@ export default function SignIn() {
             </div>
             <div className={styles.forgot}>
               Forgot password?{" "}
-              <Link href="/reset-password">Reset password</Link>
+              <Link href="">Reset password</Link>
             </div>
             <div onClick={submit} className={styles.submitBtn}>Sign In</div>
             <div className={styles.forgot}>
-              Don't have an account yet? <Link href="/sign-up">Sign Up</Link>
+              Don't have an account yet? <Link href={router?.query?.signin === "please-signin"?{pathname:"/sign-up",query:{signup:"please-signup"}}:"/sign-up"}>Sign Up</Link>
             </div>
           </div>
         </div>
