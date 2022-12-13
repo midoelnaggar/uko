@@ -86,7 +86,6 @@ export default function Home() {
                           category: category?.id,
                         },
                       });
-                      setPageLoading(true);
                     }}
                     className={styles.category}
                   >

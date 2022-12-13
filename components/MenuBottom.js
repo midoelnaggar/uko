@@ -1,20 +1,84 @@
+import axios from "axios";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useSnackbar } from "notistack";
+import { useContext, useState, useEffect } from "react";
 import CategoryMotion from "../components/CategoryMotion";
+import CartContext from "../context/CartContext";
 import LoginDetailsContext from "../context/LoginDetailsContext";
 import styles from "../styles/Category.module.scss";
+import Loading from "./Loading";
 
 export default function MenuBottom({ selectedCategory, items }) {
-  const [count, setCount] = useState(1);
+  const [addingItemToCart, setAddingItemToCart] = useState(false);
+  const [itemCount, setItemCount] = useState(1);
+  const [itemSize, setItemSize] = useState(null);
+  const [itemExtras, setItemExtras] = useState([]);
+  const [itemType, setItemType] = useState(null);
+  const [itemTotal, setItemTotal] = useState(0);
   const [itemModalOpen, setItemModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState({});
   const { loginDetails } = useContext(LoginDetailsContext);
+  const { setCart } = useContext(CartContext);
+
+  const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
+
   const handleAddToCart = (item) => {
     setSelectedItem(item);
     setItemModalOpen(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    if (itemModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return ()=> document.body.style.overflow = "scroll"
+  }, [itemModalOpen]);
+
+  const handleAddToBag = async ({ product_id, qty, size_id, type_id }) => {
+    setAddingItemToCart(true);
+
+    try {
+      const res = await axios.post(
+        "https://uko.raqamyat.com/uko/public/api/cart/store",
+        { product_id, qty, size_id, type_id },
+        {
+          headers: {
+            Authorization: "Bearer " + loginDetails?.item?.data?.token,
+          },
+        }
+      );
+
+      if (res?.status === 200) {
+        const res = await axios.get(
+          "https://uko.raqamyat.com/uko/public/api/cart",
+          {
+            headers: {
+              Authorization: "Bearer " + loginDetails?.item?.data?.token,
+            },
+          }
+        );
+        await setCart(res.data.item.data);
+        setAddingItemToCart(false);
+
+      }
+    } catch (error) {
+      enqueueSnackbar(error?.message, {
+        variant: "error",
+      });
+      setAddingItemToCart(false)
+    }
+  };
+
+  useEffect(() => {
+    const extrasTotal = itemExtras?.reduce(
+      (a, b) => Number(a) + Number(b.price),
+      0
+    );
+    const total = (Number(itemSize?.price) + extrasTotal) * itemCount;
+    console.log(itemType);
+    setItemTotal(total);
+  }, [itemCount, itemSize, itemExtras, itemType]);
 
   return (
     <>
@@ -51,7 +115,14 @@ export default function MenuBottom({ selectedCategory, items }) {
                 <div className={styles.size}>
                   <div className={styles.left}>
                     <div>
-                      <input type={"radio"} name="sizes" value={size?.id} />{" "}
+                      <input
+                        type={"radio"}
+                        name="sizes"
+                        value={size?.id}
+                        onChange={() => {
+                          setItemSize(size);
+                        }}
+                      />
                     </div>
                     <div>
                       <label>{size?.name}</label>
@@ -76,7 +147,14 @@ export default function MenuBottom({ selectedCategory, items }) {
                           type={"checkbox"}
                           name="extra"
                           value={extra?.id}
-                        />{" "}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setItemExtras([...itemExtras, extra]);
+                            } else {
+                              setItemExtras(itemExtras?.splice(1, extra));
+                            }
+                          }}
+                        />
                       </div>
                       <div>
                         <label>{extra?.name}</label>
@@ -96,7 +174,12 @@ export default function MenuBottom({ selectedCategory, items }) {
                   <div className={styles.type}>
                     <div className={styles.left}>
                       <div>
-                        <input type={"radio"} name="types" value={type?.id} />{" "}
+                        <input
+                          type={"radio"}
+                          name="types"
+                          value={type?.id}
+                          onClick={() => setItemType(type)}
+                        />
                       </div>
                       <div>
                         <label>{type?.name}</label>
@@ -113,19 +196,44 @@ export default function MenuBottom({ selectedCategory, items }) {
             </div>
           </div>
           <div className={styles.divider} />
-          <div className={styles.total}>
-            <label>Total</label>
-            <div className={styles.right}>
-              <strong>18</strong> EGP
+          <div className={styles.counter}>
+            <div
+              onClick={() => itemCount > 1 && setItemCount(itemCount - 1)}
+              className={styles.btn}
+            >
+              <img src="/img/minus.svg" alt="minus" />
+            </div>
+            <div className={styles.count}>{itemCount}</div>
+            <div
+              onClick={() => setItemCount(itemCount + 1)}
+              className={styles.btn}
+            >
+              <img src="/img/plus.svg" alt="plus" />{" "}
             </div>
           </div>
-          <div className={styles.counter}>
-              <div onClick={()=>setCount(count-1)} className={styles.btn}><img src="/img/minus.svg" alt="minus" /></div>
-              <div className={styles.count}>{count}</div>
-              <div onClick={()=>setCount(count+1)} className={styles.btn}><img src="/img/plus.svg" alt="plus" />  </div>
-          </div>
-          <div className={styles.addToBag}>
-          Add to Bag
+          <div
+            onClick={() =>
+              handleAddToBag({
+                product_id: selectedItem?.id,
+                qty: itemCount,
+                size_id: itemSize?.id,
+                type_id: itemType?.id,
+              })
+            }
+            className={styles.addToBag}
+          >
+            {addingItemToCart ? (
+              <Loading className={styles.total} style={{height:"40.9px",marginTop:"12px",marginBottom:"-12px"}} />
+            ) : (
+              <>
+                Add to Bag
+                {!Number.isNaN(itemTotal) && (
+                  <div className={styles.total}>
+                    <strong>{itemTotal}</strong> EGP{" "}
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </div>
       </CategoryMotion>

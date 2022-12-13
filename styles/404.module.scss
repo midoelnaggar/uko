@@ -1,0 +1,62 @@
+.page {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .header {
+    font-family: var(--secFont);
+    font-style: italic;
+    font-size: 38px;
+  }
+  .imageContainer {
+    display: flex;
+    img {
+        margin-top: -100px;
+      max-width: 90vw;
+    }
+  }
+
+  
+.orderNow {
+    position: relative;
+    width: 283px;
+    height: 89px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .orderNow:hover .border {
+    animation: orderNowButtonAnimation 0.3s forwards ease-out;
+  }
+  
+  .border {
+    position: absolute;
+    width: 283px;
+    height: 89px;
+    top: 0;
+    left: 0;
+    border: 1px solid var(--firColor);
+    border-radius: 50%;
+  }
+  
+  .orderNow > div {
+    font-family: var(--secFont);
+    font-size: 29px;
+    font-style: italic;
+  }
+  
+  @keyframes orderNowButtonAnimation {
+    0% {
+      scale: 1;
+    }
+    100% {
+      scale: 0.9;
+    }
+  }
+
+}
+
+
+
