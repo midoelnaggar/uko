@@ -30,9 +30,9 @@ export default function MenuBottom({ selectedCategory, items }) {
 
   useEffect(() => {
     if (itemModalOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflowY = "hidden";
     }
-    return ()=> document.body.style.overflow = "scroll"
+    return ()=> document.body.style.overflowY = "scroll"
   }, [itemModalOpen]);
 
   const handleAddToBag = async ({ product_id, qty, size_id, type_id }) => {
