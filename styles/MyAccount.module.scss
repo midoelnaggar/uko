@@ -1,0 +1,32 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .pageTitle {
+    font-family: var(--secFont);
+    font-size: 38px;
+    font-weight: 700;
+  }
+
+  .lastOrder {
+    margin-block: 70px;
+    width: 964px;
+    height: 220px;
+    background-color: var(--firColor);
+    border-radius: 45px;
+    display: flex;
+    img {
+        margin: -20px;
+        margin-bottom: -8px;
+        margin-left: -70px;
+    }
+    .orderNumberAndProgress{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #858585;
+    }
+  }
+}

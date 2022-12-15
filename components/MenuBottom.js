@@ -32,43 +32,78 @@ export default function MenuBottom({ selectedCategory, items }) {
     if (itemModalOpen) {
       document.body.style.overflowY = "hidden";
     }
-    return ()=> document.body.style.overflowY = "scroll"
+    return () => (document.body.style.overflowY = "scroll");
   }, [itemModalOpen]);
 
   const handleAddToBag = async ({ product_id, qty, size_id, type_id }) => {
     setAddingItemToCart(true);
-
-    try {
-      const res = await axios.post(
-        "https://uko.raqamyat.com/uko/public/api/cart/store",
-        { product_id, qty, size_id, type_id },
-        {
-          headers: {
-            Authorization: "Bearer " + loginDetails?.item?.data?.token,
-          },
-        }
-      );
-
-      if (res?.status === 200) {
-        const res = await axios.get(
-          "https://uko.raqamyat.com/uko/public/api/cart",
+    if ((size_id === undefined) & (type_id === undefined)) {
+      enqueueSnackbar("Please select item's size and type.", {
+        variant: "warning",
+      });
+      setAddingItemToCart(false);
+    } else if (size_id === undefined) {
+      enqueueSnackbar("Please select item's size.", {
+        variant: "warning",
+      });
+      setAddingItemToCart(false);
+    } else if (type_id === undefined) {
+      enqueueSnackbar("Please select item's type.", {
+        variant: "warning",
+      });
+      setAddingItemToCart(false);
+    } else {
+      try {
+        const res = await axios.post(
+          "https://uko.raqamyat.com/uko/public/api/cart/store",
+          { product_id, qty, size_id, type_id },
           {
             headers: {
               Authorization: "Bearer " + loginDetails?.item?.data?.token,
             },
           }
         );
-        await setCart(res.data.item.data);
-        setAddingItemToCart(false);
 
+        if (res?.status === 200) {
+          const res = await axios.get(
+            "https://uko.raqamyat.com/uko/public/api/cart",
+            {
+              headers: {
+                Authorization: "Bearer " + loginDetails?.item?.data?.token,
+              },
+            }
+          );
+          await setCart(res.data.item.data);
+          setAddingItemToCart(false);
+          setItemModalOpen(false);
+          enqueueSnackbar("Item added to the bag", { variant: "success" });
+        }
+      } catch (error) {
+        enqueueSnackbar(error?.message, {
+          variant: "error",
+        });
+        setAddingItemToCart(false);
       }
-    } catch (error) {
-      enqueueSnackbar(error?.message, {
-        variant: "error",
-      });
-      setAddingItemToCart(false)
     }
   };
+  useEffect(() => {
+    setItemCount(1);
+    setItemSize(null);
+    setItemExtras([]);
+    setItemType(null);
+    const size = document.getElementsByName("size");
+    for (let i = 0; i < size?.length; i++) {
+      size[i].checked = false;
+    }
+    const extras = document.getElementsByName("extras");
+    for (let i = 0; i < extras?.length; i++) {
+      extras[i].checked = false;
+    }
+    const type = document.getElementsByName("type");
+    for (let i = 0; i < type?.length; i++) {
+      type[i].checked = false;
+    }
+  }, [itemModalOpen]);
 
   useEffect(() => {
     const extrasTotal = itemExtras?.reduce(
@@ -76,12 +111,12 @@ export default function MenuBottom({ selectedCategory, items }) {
       0
     );
     const total = (Number(itemSize?.price) + extrasTotal) * itemCount;
-    console.log(itemType);
     setItemTotal(total);
   }, [itemCount, itemSize, itemExtras, itemType]);
 
   return (
     <>
+
       <CategoryMotion>
         <div className={styles.title}>
           <img src="/img/menuTitleTop.svg" />
@@ -104,70 +139,75 @@ export default function MenuBottom({ selectedCategory, items }) {
             display: `${itemModalOpen ? "flex" : "none"}`,
           }}
         >
-          <div className={styles.imageContainer}>
-            <img src={selectedItem?.image} />
-          </div>
-          <div className={styles.name}>{selectedItem?.name}</div>
-          <div className={styles.description}>{selectedItem?.description}</div>
-          <div className={styles.sizes}>
-            {selectedItem?.sizes?.map((size) => {
-              return (
-                <div className={styles.size}>
-                  <div className={styles.left}>
-                    <div>
-                      <input
-                        type={"radio"}
-                        name="sizes"
-                        value={size?.id}
-                        onChange={() => {
-                          setItemSize(size);
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <label>{size?.name}</label>
-                    </div>
-                  </div>
-                  <div className={styles.right}>
-                    <strong>{size?.price}</strong> EGP
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.divider} />
-          <div className={styles.scrollArea}>
-            <div className={styles.extras}>
-              {selectedItem?.extras?.map((extra) => {
+          <div className={styles.topArea}>
+            <div className={styles.imageContainer}>
+              <img src={selectedItem?.image} />
+            </div>
+            <div className={styles.name}>{selectedItem?.name}</div>
+            <div className={styles.description}>
+              {selectedItem?.description}
+            </div>
+            <div className={styles.sizes}>
+              {selectedItem?.sizes?.map((size) => {
                 return (
-                  <div className={styles.extra}>
+                  <div className={styles.size}>
                     <div className={styles.left}>
                       <div>
                         <input
-                          type={"checkbox"}
-                          name="extra"
-                          value={extra?.id}
-                          onChange={(e) => {
-                            if (e.target.checked) {
-                              setItemExtras([...itemExtras, extra]);
-                            } else {
-                              setItemExtras(itemExtras?.splice(1, extra));
-                            }
+                          type={"radio"}
+                          name="size"
+                          value={size?.id}
+                          onChange={() => {
+                            setItemSize(size);
                           }}
                         />
                       </div>
                       <div>
-                        <label>{extra?.name}</label>
+                        <label>{size?.name}</label>
                       </div>
                     </div>
                     <div className={styles.right}>
-                      <strong>{extra?.price}</strong> EGP
+                      <strong>{size?.price}</strong> EGP
                     </div>
                   </div>
                 );
               })}
             </div>
-            <div className={styles.divider} />
+          </div>
+          <div className={styles.scrollArea}>
+            {selectedItem?.extras?.length > 0 && (
+              <div className={styles.extras}>
+                {selectedItem?.extras?.map((extra) => {
+                  return (
+                    <div className={styles.extra}>
+                      <div className={styles.left}>
+                        <div>
+                          <input
+                            type={"checkbox"}
+                            name="extras"
+                            value={extra?.id}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setItemExtras([...itemExtras, extra]);
+                              } else {
+                                setItemExtras(itemExtras?.splice(1, extra));
+                              }
+                            }}
+                          />
+                        </div>
+                        <div>
+                          <label>{extra?.name}</label>
+                        </div>
+                      </div>
+                      <div className={styles.right}>
+                        <strong>{extra?.price}</strong> EGP
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            <div className={styles.er} />
             <div className={styles.types}>
               {selectedItem?.types?.map((type) => {
                 return (
@@ -176,7 +216,7 @@ export default function MenuBottom({ selectedCategory, items }) {
                       <div>
                         <input
                           type={"radio"}
-                          name="types"
+                          name="type"
                           value={type?.id}
                           onClick={() => setItemType(type)}
                         />
@@ -189,13 +229,13 @@ export default function MenuBottom({ selectedCategory, items }) {
                 );
               })}
             </div>
-            <div className={styles.divider} />
+            <div className={styles.er} />
             <div className={styles.comment}>
               <div className={styles.label}>Comments</div>
               <textarea />
             </div>
           </div>
-          <div className={styles.divider} />
+          <div className={styles.er} />
           <div className={styles.counter}>
             <div
               onClick={() => itemCount > 1 && setItemCount(itemCount - 1)}
@@ -223,7 +263,14 @@ export default function MenuBottom({ selectedCategory, items }) {
             className={styles.addToBag}
           >
             {addingItemToCart ? (
-              <Loading className={styles.total} style={{height:"40.9px",marginTop:"12px",marginBottom:"-12px"}} />
+              <Loading
+                className={styles.total}
+                style={{
+                  height: "40.9px",
+                  marginTop: "12px",
+                  marginBottom: "-12px",
+                }}
+              />
             ) : (
               <>
                 Add to Bag

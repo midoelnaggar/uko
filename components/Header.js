@@ -9,7 +9,6 @@ import LoginDetailsContext from "../context/LoginDetailsContext";
 import CartContext from "../context/CartContext";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import Loading from "./Loading";
 
 export default function Header() {
   const [cartModalOpen, setCartModalOpen] = useState(false);
@@ -245,7 +244,7 @@ export default function Header() {
             </div>
             <div className={styles.checkoutOrCancel}>
               <div className={styles.checkout}>Checkout</div>
-              <div className={styles.cancel}>X</div>
+              <div onClick={()=>{setCartModalOpen(false)}} className={styles.cancel}>X</div>
             </div>
             </>
           ) : (

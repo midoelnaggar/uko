@@ -13,7 +13,7 @@
   padding: 30px;
   background-color: var(--firColor);
   width: 643px;
-  height: 95vh;
+  height: 925px;
   border-radius: 45px;
   display: none;
   position: fixed;
@@ -21,8 +21,11 @@
   top: 20px;
   transform: translate(-50%, 0);
   z-index: 2;
+  .topArea{
   .imageContainer {
-    align-self: center;
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: center;
     img {
       width: 216px;
     }
@@ -41,11 +44,24 @@
     font-size: 16px;
     line-height: 22px;
   }
-
+}
+  .scrollArea {
+    margin-block: 3px;
+    max-height: 302px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollArea::-webkit-scrollbar {
+    display: none;
+  }
+  
   .sizes,
   .extras,
   .types {
-    margin-block: 10px;
+padding-block: 15px;
+    border-bottom: 1px dashed #707070;
 
     .size,
     .extra,
@@ -90,7 +106,6 @@
     }
   }
   .divider {
-    border-top: 1px dashed #707070;
     margin-block: 0px;
   }
 
@@ -103,10 +118,9 @@
     font-family: var(--secFont);
     font-size: 34px;
     border-radius: 35px;
-    margin-top: 32px;
+    margin-top: auto;
     background-color: var(--bgc);
     cursor: pointer;
-    margin-top: auto;
     .total{
       display: flex;
       align-items: center;
@@ -128,17 +142,6 @@
   }
 }
 
-.scrollArea {
-  margin-block: 3px;
-  max-height: 242px;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollArea::-webkit-scrollbar {
-  display: none;
-}
 
 .comment {
   .label {
@@ -146,7 +149,7 @@
     font-size: 18px;
     line-height: 24px;
     font-weight: 600;
-    margin-block: 25px;
+    margin-block: 20px;
   }
 
   textarea {
@@ -185,10 +188,12 @@
   }
 }
 .counter {
-  margin-top: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 1px dashed #707070;
+  padding-block: 30px;
+
   .btn {
     display: flex;
     justify-content: center;
@@ -206,6 +211,15 @@
     color: var(--bgc);
     font-size: 24px;
     font-weight: 600;
+    transition: opacity 1s;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   * {
     margin-inline: 8px;
