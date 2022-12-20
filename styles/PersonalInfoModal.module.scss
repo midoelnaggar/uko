@@ -1,0 +1,73 @@
+.PersonalInfoModal {
+  display: none;
+  flex-direction: column;
+  padding: 30px;
+  background-color: var(--firColor);
+  width: 444px;
+  height: 447px;
+  border-radius: 45px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  .header {
+    color: var(--bgc);
+    font-size: 23px;
+    font-weight: 600;
+    border-bottom: 1px dashed var(--bgc);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .fields {
+    .field {
+      margin-bottom: 20px;
+
+      .label {
+        color: var(--bgc);
+        color: 18px;
+        font-weight: 600;
+      }
+
+      input {
+        color: var(--bgc);
+        font-family: OpenSans;
+        font-size: 16px;
+        border-radius: 0;
+        border: none;
+        background: none;
+        outline: none;
+        width: 100%;
+        border-bottom: 1px solid var(--bgc);
+        border-color: var(--bgc);
+        padding-top: 5px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      height: 60px;
+      font-family: var(--secFont);
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .save {
+      background-color: var(--bgc);
+      border-radius: 8px;
+      width: 250px;
+    }
+    .cancel {
+      border: 1px solid var(--bgc);
+      border-radius: 8px;
+      color: var(--bgc);
+      width: 118px;
+    }
+  }
+}

@@ -13,7 +13,7 @@ export default function SignIn() {
   const { enqueueSnackbar } = useSnackbar();
   const { setPageLoading } = useContext(PageLoadingContext);
   const [hiddenPassword, setHiddenPassword] = useState(true);
-  const [cookies, setCookie] = useCookies(['auth']);
+  const [cookies, setCookies] = useCookies(['auth']);
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const router = useRouter();
@@ -31,7 +31,7 @@ export default function SignIn() {
    })
    console.log(res.status)
    if ( res.status === 200) {
-    setCookie("auth",res.data)
+    setCookies("auth",res.data)
    if (router?.query?.signin === "please-signin"){
     window.location.href = "/the-menu"
    }

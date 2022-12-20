@@ -59,7 +59,7 @@ export default function Header() {
     try {
       const res = await axios.post(
         "https://uko.raqamyat.com/uko/public/api/cart/sub",
-        { product_id: item?.id,size_id :item?.size_id},
+        { product_id: item?.id, size_id: item?.size_id },
         {
           headers: {
             Authorization: "Bearer " + loginDetails?.item?.data?.token,
@@ -92,7 +92,7 @@ export default function Header() {
     try {
       const res = await axios.post(
         "https://uko.raqamyat.com/uko/public/api/cart/add",
-        { product_id: item?.id,size_id: item?.size_id },
+        { product_id: item?.id, size_id: item?.size_id },
         {
           headers: {
             Authorization: "Bearer " + loginDetails?.item?.data?.token,
@@ -129,8 +129,11 @@ export default function Header() {
 
   useEffect(() => {
     console.log(cart?.orderDetails?.data?.length);
-    if (cart?.orderDetails?.data?.length === 0 || cart?.orderDetails?.data?.length === undefined) {
-      setCartModalOpen(false)
+    if (
+      cart?.orderDetails?.data?.length === 0 ||
+      cart?.orderDetails?.data?.length === undefined
+    ) {
+      setCartModalOpen(false);
     }
   }, [cart]);
 
@@ -149,7 +152,7 @@ export default function Header() {
         z
         className={styles.bluredBg}
       />
-      
+
       <div
         style={{ display: `${cartModalOpen ? "flex" : "none"}` }}
         className={styles.cartModal}
@@ -170,10 +173,10 @@ export default function Header() {
         <div className={styles.cartContent}>
           {cart?.orderDetails?.data?.length > 0 ? (
             <div className={styles.items}>
-              {cart?.orderDetails?.data?.map((item) => {
+              {cart?.orderDetails?.data?.map((item,index) => {
                 return (
                   <>
-                    <div className={styles.item}>
+                    <div key={index} className={styles.item}>
                       <div className={styles.details}>
                         <div className={styles.nameAndSize}>
                           <div className={styles.name}>{item?.name}</div>
@@ -233,19 +236,27 @@ export default function Header() {
         </div>
         <div className={styles.cartFooter}>
           {cart?.orderDetails?.data?.length > 0 ? (
-           <>
-           <div className={styles.total}>
-            <div>
-              <div className={styles.title}>Total (INCL. VAT)</div>
-            <div className={styles.number}>
-            {cart?.total_price}<span> EGP</span>
-            </div>
-            </div>
-            </div>
-            <div className={styles.checkoutOrCancel}>
-              <div className={styles.checkout}>Checkout</div>
-              <div onClick={()=>{setCartModalOpen(false)}} className={styles.cancel}>X</div>
-            </div>
+            <>
+              <div className={styles.total}>
+                <div>
+                  <div className={styles.title}>Total (INCL. VAT)</div>
+                  <div className={styles.number}>
+                    {cart?.total_price}
+                    <span> EGP</span>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.checkoutOrCancel}>
+                <div className={styles.checkout}>Checkout</div>
+                <div
+                  onClick={() => {
+                    setCartModalOpen(false);
+                  }}
+                  className={styles.cancel}
+                >
+                  X
+                </div>
+              </div>
             </>
           ) : (
             <>
@@ -269,7 +280,9 @@ export default function Header() {
       >
         {loginDetails?.success === true ? (
           <>
-            <Link href="/my-account">My Account</Link>
+            <Link onClick={() => setProfileMenuOpen(false)} href="/my-account">
+              My Account
+            </Link>
             <div className={styles.divider} />
             <Link
               onClick={() => {

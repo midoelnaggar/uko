@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
   const [cookies, setCookies] = useCookies(["auth"]);
 
   useEffect(() => {
-    router.events.on("routeChangeStart", (url, { shallow }) => {
+    router.events.on("routeChangeStart", (url) => {
       if (url !== window.location.pathname) {
         setPageLoading(true);
       }
@@ -40,8 +40,13 @@ function MyApp({ Component, pageProps }) {
       .then((res) => {
         setCategories(res.data.item.data);
       });
-     
-  }, []);
+
+      console.log(cookies?.auth)
+
+  }
+  
+  
+  , []);
 
 
 
@@ -84,7 +89,9 @@ function MyApp({ Component, pageProps }) {
                       />
                     )}
                     <Header />
+                    <div style={{display:pageLoading?"none":"block"}}>
                     <Component {...pageProps} />
+                    </div>
                     <Footer />
                   </div>
                 </CategoriesContext.Provider>
